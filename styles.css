@@ -2,6 +2,18 @@ body {
     background-color: #EBEAE7;
     margin: 0;
     text-align: center;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #534242;
+    margin-top: 48px;
+    margin-bottom: 32px;
 }
 
 .jost {
@@ -15,7 +27,7 @@ body {
     display: grid;
     grid-template: 250px / repeat(5, 164px);
     grid-auto-rows: 250px;
-    gap: 24px;
+    gap: 16px;
     justify-content: center;   
 }
 
@@ -31,11 +43,9 @@ body {
     font-weight: 400;
     font-style: normal;
     justify-content: center;   
-    /*width: 164px;
-    height: 250px;*/
 
     padding: 8px;
-
+ 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -54,12 +64,14 @@ body {
 }
 
 .book h2 {
-    margin: 0;
+    font-size: 20px;
+    margin: 0 0 8px 0;
     font-weight: 400;
 }
 
 .book p {
     margin: 0;
+    font-size: 14px;
 }
 
 .book a {
@@ -75,6 +87,7 @@ body {
 }
 
 .book-bottom {
+    text-align: right;
     opacity: 0;
     transition: opacity 0.15s ease;
 }
@@ -94,4 +107,35 @@ body {
 
 .hide {
     display: none !important;
+}
+
+#addBook {
+    transition: box-shadow 0.15s ease;
+}
+
+#addBook img {
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+}
+
+#addBook:hover {
+    box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+}
+
+#addBook:hover img {
+    opacity: 1;
+}
+
+#modal-addBook {
+    /* TEMP */
+    margin-top: 24px;
+    /****/
+
+    width:533px;
+    border-radius: 4px;
+    background-color: #F6F5F5;
+    padding: 16px;
+    box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.18);
+    border: 1px solid #
 }

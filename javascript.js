@@ -26,13 +26,12 @@ function addBookToLibrary(book) {
 function renderLibrary() {
 
     // Delete old HTML
-    // For each book in the library
-        // Create the HTML
-        // Append it to the bookshelf HTML
 
-    const bookToCreate = createBookHTML(myLibrary[0]);
-
-    div_bookShelf.appendChild(bookToCreate);
+    // For each book in the library, create and prepend
+    myLibrary.forEach((book) => {
+        div_bookShelf.prepend(createBookHTML(book));
+        console.log("hi book");
+    })
 }
 
 // Function returns single book HTML with properly hidden bits etc.
@@ -44,7 +43,7 @@ function createBookHTML(book) {
     // The index of the new item (length of array)
     bookToCreate.id = myLibrary.length;
     bookToCreate.classList.add("book");
-
+    
     const bookHTML = (book) => `
         <div class="book-top">
             <span class="badge read jost">READ</span>
@@ -80,7 +79,18 @@ function createBookHTML(book) {
 
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
-
 addBookToLibrary(theHobbit);
 
+const theHobbit2 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 295, true);
+addBookToLibrary(theHobbit2);
+
+const theHobbit3 = new Book('The Bible', 'God', 678, true);
+addBookToLibrary(theHobbit3);
+
+const theHobbit4 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 295, true);
+addBookToLibrary(theHobbit4);
+
+
 renderLibrary();
+
+
