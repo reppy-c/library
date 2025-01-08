@@ -79,8 +79,6 @@ function createBookHTML(book) {
     // Depending if read or not, hide the corresponding badge and CTA
     if(book.read) {
         bookToCreate.classList.add("read");
-        //bookToCreate.getElementsByClassName('badge unread')[0].classList.add("hide");
-        //bookToCreate.getElementsByClassName('book-markRead')[0].classList.add("hide");
     }
 
     return bookToCreate;
@@ -95,7 +93,7 @@ function toggleBookModal() {
     }
 }
 
-// Toggles a book between read and unread
+// Toggles a book between read and unread in array and DOM
 function toggleReadStatus(element, bookID) {
     myLibrary.forEach((book) => {
         if(book.id == bookID) {
@@ -111,7 +109,7 @@ function toggleReadStatus(element, bookID) {
     })
 }
 
-// Remove function
+// Removes a book from array and DOM
 function remove(element, bookID) {
 
     myLibrary.forEach((book) => {
@@ -122,8 +120,6 @@ function remove(element, bookID) {
             element.parentNode.parentNode.remove();
         }
     })
-
-    console.log(myLibrary);
 }
 
 // Main
