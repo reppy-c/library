@@ -60,7 +60,10 @@ a:hover {
 
     border-radius: 4px;
     background-color: #F6F5F5;
+    border-left: 6px solid #F6F5F5;
     box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.18);
+
+    transition: background-color 0.1s ease;
 }
 
 .book.read {
@@ -68,7 +71,6 @@ a:hover {
     border-left: 6px solid #8A3535;
     background-color: #AD4242;
     color: #fff;
-    
 }
 
 .book.read a {
