@@ -69,8 +69,8 @@ function createBookHTML(book) {
         </div>
 
         <div class="book-bottom">
-            <a class="book-markUnread jost" href="">Mark As Unread</a>
-            <a class="book-markRead jost" href="">Mark As Read</a>
+            <a class="book-markUnread jost" onclick="toggleReadStatus(this, ${book.id})">Mark As Unread</a>
+            <a class="book-markRead jost" onclick="toggleReadStatus(this, ${book.id})">Mark As Read</a>
             <a class="book-remove jost" onclick="remove(this, ${book.id})">Remove</a>
         </div>
     `;
@@ -96,10 +96,19 @@ function toggleBookModal() {
 }
 
 // Toggles a book between read and unread
-function toggleReadStatus() {
-    // Find the book in the database
-    // Change its status
-    // Update the book tile in the DOM
+function toggleReadStatus(element, bookID) {
+    myLibrary.forEach((book) => {
+        if(book.id == bookID) {
+            if(book.read == true) {
+                book.read = false;
+                element.parentNode.parentNode.classList.remove("read");
+            }
+            else {
+                book.read = true;
+                element.parentNode.parentNode.classList.add("read");
+            }
+        }        
+    })
 }
 
 // Remove function
