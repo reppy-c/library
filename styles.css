@@ -1,19 +1,29 @@
 body {
     background-color: #EBEAE7;
+    color: #534242;
     margin: 0;
     text-align: center;
     display:flex;
     flex-direction: column;
     align-items: center;
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1 {
-    font-family: "PT Serif", serif;
+    font-family: "Aleo", serif;
     font-weight: 400;
     font-style: normal;
     color: #534242;
     margin-top: 48px;
     margin-bottom: 32px;
+}
+
+.aleo {
+    font-family: "Aleo", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .jost {
@@ -39,7 +49,7 @@ h1 {
     color: #fff;
     box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.18);
     
-    font-family: "PT Serif", serif;
+    font-family: "Aleo", serif;
     font-weight: 400;
     font-style: normal;
     justify-content: center;   
@@ -112,7 +122,6 @@ h1 {
 #addBook {
     transition: box-shadow 0.15s ease;
 }
-
 #addBook img {
     opacity: 0.5;
     transition: opacity 0.15s ease;
@@ -128,14 +137,95 @@ h1 {
 }
 
 #modal-addBook {
-    /* TEMP */
-    margin-top: 24px;
-    /****/
-
-    width:533px;
+    position:relative;
+    width:292px;
     border-radius: 4px;
     background-color: #F6F5F5;
-    padding: 16px;
+    padding: 36px;
     box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.18);
-    border: 1px solid #
+
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 100;
+}
+
+#modal-addBook form {
+    text-align: left;
+}
+
+#modal-addBook h2 {
+    font-family: "Aleo", serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 0;
+}
+
+#add-close {
+    display:block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    background: none;
+    border: none;    
+    cursor: pointer;
+}
+
+#modal-addBook label {
+    font-family: Jost;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+#add-pages {
+    width: 70px !important;
+}
+
+#modal-addBook .textField {
+    padding: 8px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-family: Jost;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#modal-addBook .radio {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    font-size: 14px;
+    gap:4px;
+}
+
+#modal-addBook #add-button {
+    border-radius: 4px;
+    color: #ffffff;
+    background: #534242;
+    width:100%;
+    padding: 8px;
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+#scrim {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color:rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
 }

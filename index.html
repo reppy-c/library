@@ -11,25 +11,58 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-    <h1>My Library</h1>
+    <h1 class="aleo">My Library</h1>
 
     <div id="bookshelf">
      
-        <div id="addBook" class="book">  
+        <button id="addBook" class="book" onclick="toggleBookModal();">  
             <img src="add.svg" />
-        </div>
+        </button>
     </div>
 
-    <div id="modal-addBook">
-        <input type="text" />
-    </div>
+    <div id="scrim">
+        <div id="modal-addBook">
+            <button id="add-close" onclick="toggleBookModal();"><img src="close.svg"></button>
+            <h2>Add a Book</h2>
     
+            <form id="form-addBook">
+
+                <label>TITLE</label>
+                <input id="add-title" name="add-title" class="textField" type="text" required/>
+        
+        
+                <label>AUTHOR</label>
+                <input id="add-author" name="add-author" class="textField" type="text" required/>
+        
+        
+                <label>PAGES</label>
+                <input id="add-pages" name="add-pages" class="textField" type="number" required/>
+        
+                <label class="radio"><input id="add-unread" name="readStatus" type="radio" value="false" checked="true" /> I haven't read it</label>
+                <label class="radio"><input id="add-read" name="readStatus" value="true" type="radio" /> I've read it</label>
+        
+                <button type="submit" id="add-button">Add Book</button>
+
+            </form>
+        </div>
+
+    </div>
 
 </body>
 
 </html>
+
+<!-- TO DO
+ 
+- try moving all the read / unread styles to be dependent on one class on parent
+- enable toggle read / unread
+- enable remove
+- find colour palette of at least 4 book colours
+- randomize colour on book creation
+
+-->

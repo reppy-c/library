@@ -1,5 +1,7 @@
 const myLibrary = []
 const div_bookShelf = document.querySelector('#bookshelf');
+const div_modal = document.querySelector('#scrim');
+const form_addBook = document.querySelector('#form-addBook');
 
 function Book(title, author, pages, read = false) {
     this.title = title;
@@ -22,16 +24,17 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
-// Clear out old library and render new
+// Render entire library
 function renderLibrary() {
-
-    // Delete old HTML
-
     // For each book in the library, create and prepend
     myLibrary.forEach((book) => {
         div_bookShelf.prepend(createBookHTML(book));
-        console.log("hi book");
     })
+}
+
+// Render one additional book
+function renderBook(book) {
+    div_bookShelf.prepend(createBookHTML(book));
 }
 
 // Function returns single book HTML with properly hidden bits etc.
@@ -66,7 +69,6 @@ function createBookHTML(book) {
 
     // Depending if read or not, hide the corresponding badge and CTA
     if(book.read) {
-        console.log("hi");
         bookToCreate.getElementsByClassName('badge unread')[0].classList.add("hide");
         bookToCreate.getElementsByClassName('book-markRead')[0].classList.add("hide");
     } else {
@@ -77,19 +79,46 @@ function createBookHTML(book) {
     return bookToCreate;
 }
 
+function toggleBookModal() {
+    
+    console.log(div_modal.style.display);
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
-addBookToLibrary(theHobbit);
+    if(div_modal.style.display == "") {
+        div_modal.style.display = "flex";
+    } else {
+        div_modal.style.display = "";
 
-const theHobbit2 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 295, true);
-addBookToLibrary(theHobbit2);
+    }
+}
 
-const theHobbit3 = new Book('The Bible', 'God', 678, true);
-addBookToLibrary(theHobbit3);
 
-const theHobbit4 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 295, true);
-addBookToLibrary(theHobbit4);
+// Main stuff below here
 
+form_addBook.addEventListener('submit', function(event) {
+    
+    event.preventDefault();
+    
+    const formData = new FormData(form_addBook);
+    const newBook = new Book(formData.get('add-title'), formData.get('add-author'), formData.get('add-pages'), formData.get('readStatus'))
+    addBookToLibrary(newBook);
+
+    toggleBookModal();
+    form_addBook.reset();
+
+    renderBook(newBook);
+});
+
+const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
+addBookToLibrary(book1);
+
+const book2 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 673, true);
+addBookToLibrary(book2);
+
+const book3 = new Book('Here One Moment', 'Liane Moriarty', 722, true);
+addBookToLibrary(book3);
+
+const book4 = new Book('What Does It Feel Like', 'Sophie Kinsella', 563, true);
+addBookToLibrary(book4);
 
 renderLibrary();
 
