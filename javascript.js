@@ -3,12 +3,19 @@ const div_bookShelf = document.querySelector('#bookshelf');
 const div_modal = document.querySelector('#scrim');
 const form_addBook = document.querySelector('#form-addBook');
 
+// Just keep incrementing ID for a book
+// Will probably need to move to a hash instead when working with a real DB
+var bookIDCounter = 1; 
+
 // Book constructor
 function Book(title, author, pages, read = false) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    
+    this.id = bookIDCounter;
+    bookIDCounter++;
 
     this.info = function() {
         var returnString = this.title + " by " + this.author + ", " + this.pages;
@@ -46,7 +53,7 @@ function createBookHTML(book) {
     const bookToCreate = document.createElement("div");
 
     // The index of the new item (length of array)
-    bookToCreate.id = myLibrary.length;
+    bookToCreate.id = book.id;
     bookToCreate.classList.add("book");
     
     const bookHTML = (book) => `
@@ -64,7 +71,7 @@ function createBookHTML(book) {
         <div class="book-bottom">
             <a class="book-markUnread jost" href="">Mark As Unread</a>
             <a class="book-markRead jost" href="">Mark As Read</a>
-            <a class="book-remove jost" href="">Remove</a>
+            <a class="book-remove jost" onclick="remove(this, ${book.id})">Remove</a>
         </div>
     `;
     bookToCreate.innerHTML = bookHTML(book);
@@ -88,7 +95,31 @@ function toggleBookModal() {
     }
 }
 
+// Toggles a book between read and unread
+function toggleReadStatus() {
+    // Find the book in the database
+    // Change its status
+    // Update the book tile in the DOM
+}
+
+// Remove function
+function remove(element, bookID) {
+
+    myLibrary.forEach((book) => {
+        if(book.id == bookID) {
+            const indexy = myLibrary.indexOf(book);
+            
+            myLibrary.splice(indexy, 1);
+            element.parentNode.parentNode.remove();
+        }
+    })
+
+    console.log(myLibrary);
+}
+
 // Main
+
+// Add event listener to the add card
 form_addBook.addEventListener('submit', function(event) {
     
     event.preventDefault();
