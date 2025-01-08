@@ -3,6 +3,7 @@ const div_bookShelf = document.querySelector('#bookshelf');
 const div_modal = document.querySelector('#scrim');
 const form_addBook = document.querySelector('#form-addBook');
 
+// Book constructor
 function Book(title, author, pages, read = false) {
     this.title = title;
     this.author = author;
@@ -20,6 +21,7 @@ function Book(title, author, pages, read = false) {
     };
 }
 
+// Add the book to the array
 function addBookToLibrary(book) {
     myLibrary.push(book);
 }
@@ -69,31 +71,24 @@ function createBookHTML(book) {
 
     // Depending if read or not, hide the corresponding badge and CTA
     if(book.read) {
-        bookToCreate.getElementsByClassName('badge unread')[0].classList.add("hide");
-        bookToCreate.getElementsByClassName('book-markRead')[0].classList.add("hide");
-    } else {
-        bookToCreate.getElementsByClassName('badge read')[0].classList.add("hide");
-        bookToCreate.getElementsByClassName('book-markUnread')[0].classList.add("hide");
+        bookToCreate.classList.add("read");
+        //bookToCreate.getElementsByClassName('badge unread')[0].classList.add("hide");
+        //bookToCreate.getElementsByClassName('book-markRead')[0].classList.add("hide");
     }
 
     return bookToCreate;
 }
 
+// Toggles the scrim between display:none and flex
 function toggleBookModal() {
-    
-    console.log(div_modal.style.display);
-
     if(div_modal.style.display == "") {
         div_modal.style.display = "flex";
     } else {
         div_modal.style.display = "";
-
     }
 }
 
-
-// Main stuff below here
-
+// Main
 form_addBook.addEventListener('submit', function(event) {
     
     event.preventDefault();
@@ -108,7 +103,7 @@ form_addBook.addEventListener('submit', function(event) {
     renderBook(newBook);
 });
 
-const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
+const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 addBookToLibrary(book1);
 
 const book2 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 673, true);

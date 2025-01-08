@@ -41,36 +41,50 @@ h1 {
     justify-content: center;   
 }
 
+/********** Book card **********/
+
 .book {
+    font-family: "Aleo", serif;
+    font-weight: 400;
+    font-style: normal;
+
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+
     border-radius: 4px;
+    background-color: #F6F5F5;
+    box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.18);
+}
+
+.book.read {
     border: 2px solid #8F4D4D;
     border-left: 6px solid #8A3535;
     background-color: #AD4242;
     color: #fff;
-    box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.18);
     
-    font-family: "Aleo", serif;
-    font-weight: 400;
-    font-style: normal;
-    justify-content: center;   
-
-    padding: 8px;
- 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
-#addBook {
-    background-color: #F6F5F5;
-    border: none;
-    justify-content: center;
-    align-items: center;
-    box-shadow: none;
+.book.read a {
+    color: #fff;
 }
 
-#addBook img {
-    width: 40px;
+.book.read .badge.unread {
+    display:none;
+}
+
+.book:not(.read) .badge.read {
+    display:none;
+}
+
+.book.read a.book-markRead {
+    display:none;
+}
+
+.book:not(.read) a.book-markUnread {
+    display:none;
 }
 
 .book h2 {
@@ -85,11 +99,12 @@ h1 {
 }
 
 .book a {
-    color: #fff;
+    color: #534242;
     display: block;
     text-transform: uppercase;
     font-size: 13px;
     text-decoration: none;
+    letter-spacing: -0.02rem;
 }
 
 .book a:hover {
@@ -107,23 +122,28 @@ h1 {
 }
 
 .badge {
-    display: flex;
-    background-color: #7E3737;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.08);
     padding: 2px 4px;
     border-radius: 2px;
-    justify-self: end;
     font-size: 13px;
+    right: 8px;
 }
 
-.hide {
-    display: none !important;
-}
+/********** Add Book card button **********/
 
 #addBook {
+    background-color: #F6F5F5;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
     transition: box-shadow 0.15s ease;
 }
+
 #addBook img {
     opacity: 0.5;
+    width: 40px;
     transition: opacity 0.15s ease;
 }
 
@@ -179,10 +199,6 @@ h1 {
     font-weight: 500;
 }
 
-#add-pages {
-    width: 70px !important;
-}
-
 #modal-addBook .textField {
     padding: 8px;
     border: 1px solid #c5c5c5;
@@ -194,6 +210,10 @@ h1 {
     font-weight: 500;
     width: 100%;
     box-sizing: border-box;
+}
+
+modal-addBook #add-pages {
+    width: 70px !important;
 }
 
 #modal-addBook .radio {
@@ -228,4 +248,8 @@ h1 {
     justify-content: center;
     align-items: center;
     z-index: 99;
+}
+
+.hide {
+    display: none !important;
 }
